@@ -24,8 +24,6 @@ void setup() {
         Serial.print(number);
         Serial.print(" is ");
         Serial.println(squared);
-      } else {
-        Serial.println("Invalid number entered.");
       }
   
       // Prompt again for a new number
