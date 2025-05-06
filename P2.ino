@@ -8,33 +8,35 @@
 int counter = 0;
 
 void setup() {
-  // Initialize LED pins as output
   pinMode(13, OUTPUT); // Green
   pinMode(12, OUTPUT); // Yellow
   pinMode(11, OUTPUT); // Red
+
+  Serial.begin(9600); // Start Serial Monitor
 }
 
 void loop() {
-  // Check counter and light up corresponding LED
+  Serial.print("Counter: ");
+  Serial.println(counter); // Show the current value of counter
+
   if (counter < 100) {
-    digitalWrite(13, HIGH); // Green ON
-    digitalWrite(12, LOW);  // Yellow OFF
-    digitalWrite(11, LOW);  // Red OFF
-  } else if (counter <= 200) {  // Includes counter == 100
+    digitalWrite(13, HIGH);
+    digitalWrite(12, LOW);
+    digitalWrite(11, LOW);
+  } else if (counter <= 200) {
     digitalWrite(13, LOW);
     digitalWrite(12, HIGH);
     digitalWrite(11, LOW);
-  } else { // counter > 200
+  } else {
     digitalWrite(13, LOW);
     digitalWrite(12, LOW);
     digitalWrite(11, HIGH);
   }
 
-  // Simulate counter increment
   counter++;
   if (counter > 300) {
-    counter = 0; // Reset for simulation loop
+    counter = 0;
   }
 
-  delay(100); // Delay to slow down LED changes
+  delay(100); // Slow down so you can see the changes
 }
